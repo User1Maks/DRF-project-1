@@ -1,0 +1,61 @@
+[
+{
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+        "password": "pass",
+        "last_login": null,
+        "is_superuser": false,
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-10-29T17:49:55.560Z",
+        "first_name": null,
+        "last_name": null,
+        "email": "user@sky.pro",
+        "avatar": "",
+        "phone": null,
+        "city": "Владимир",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "payment_date": "2024-10-29",
+        "paid_course": 1,
+        "paid_lesson": 3,
+        "payment_amount": 120000,
+        "payment_by_card": true,
+        "cash_payment": false
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 2,
+    "fields": {
+        "user": 1,
+        "payment_date": "2024-10-21",
+        "paid_course": 1,
+        "paid_lesson": 1,
+        "payment_amount": 90000,
+        "payment_by_card": true,
+        "cash_payment": false
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 3,
+    "fields": {
+        "user": 1,
+        "payment_date": "2024-10-25",
+        "paid_course": 3,
+        "paid_lesson": 4,
+        "payment_amount": 90000,
+        "payment_by_card": true,
+        "cash_payment": false
+    }
+}
+]

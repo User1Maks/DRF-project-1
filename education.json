@@ -1,0 +1,137 @@
+[
+{
+    "model": "education.course",
+    "pk": 1,
+    "fields": {
+        "name": "Python разработчик",
+        "image": "",
+        "description": "Создает сервисы на языке Python"
+    }
+},
+{
+    "model": "education.course",
+    "pk": 3,
+    "fields": {
+        "name": "Java-разарботчик",
+        "image": "",
+        "description": "Создает сервисы для миллионов людей"
+    }
+},
+{
+    "model": "education.course",
+    "pk": 4,
+    "fields": {
+        "name": "Веб-разарботчик",
+        "image": "",
+        "description": "Собирает веб-сервисы и сайты"
+    }
+},
+{
+    "model": "education.course",
+    "pk": 5,
+    "fields": {
+        "name": "Инджинер-маркетолог",
+        "image": "",
+        "description": "Продвигает продукты в digital-сфере"
+    }
+},
+{
+    "model": "education.lesson",
+    "pk": 1,
+    "fields": {
+        "name": "DRF",
+        "description": "Django REST framework (DRF)",
+        "image": "",
+        "link_to_video": null,
+        "course": 1
+    }
+},
+{
+    "model": "education.lesson",
+    "pk": 3,
+    "fields": {
+        "name": "Сериализаторы",
+        "description": "Изучение ключевых концепций, необходимые для разработки приложений с использованием сериализаторов.",
+        "image": "",
+        "link_to_video": null,
+        "course": 1
+    }
+},
+{
+    "model": "education.lesson",
+    "pk": 4,
+    "fields": {
+        "name": "Урок по Java",
+        "description": "Урок 1",
+        "image": "",
+        "link_to_video": null,
+        "course": 3
+    }
+},
+{
+    "model": "education.lesson",
+    "pk": 5,
+    "fields": {
+        "name": "Урок по Java",
+        "description": "Урок",
+        "image": "",
+        "link_to_video": null,
+        "course": 3
+    }
+},
+{
+    "model": "education.lesson",
+    "pk": 6,
+    "fields": {
+        "name": "Урок по Java",
+        "description": "Урок 3",
+        "image": "",
+        "link_to_video": null,
+        "course": 3
+    }
+},
+{
+    "model": "education.lesson",
+    "pk": 7,
+    "fields": {
+        "name": "Урок по веб разработке",
+        "description": "Урок 1",
+        "image": "",
+        "link_to_video": null,
+        "course": 4
+    }
+},
+{
+    "model": "education.lesson",
+    "pk": 8,
+    "fields": {
+        "name": "Урок по веб разработке",
+        "description": "Урок 2",
+        "image": "",
+        "link_to_video": null,
+        "course": 4
+    }
+},
+{
+    "model": "education.lesson",
+    "pk": 9,
+    "fields": {
+        "name": "Урок по маркетингу",
+        "description": "Урок 1",
+        "image": "",
+        "link_to_video": null,
+        "course": 5
+    }
+},
+{
+    "model": "education.lesson",
+    "pk": 10,
+    "fields": {
+        "name": "Урок по маркетингу",
+        "description": "Урок 2",
+        "image": "",
+        "link_to_video": null,
+        "course": 5
+    }
+}
+]

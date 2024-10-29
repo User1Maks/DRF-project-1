@@ -1,6 +1,6 @@
 from django.db import models
 
-from users.models import NULLABLE
+NULLABLE = {'blank': True, 'null': True}
 
 
 class Course(models.Model):
@@ -40,7 +40,8 @@ class Lesson(models.Model):
         Course,
         on_delete=models.CASCADE,
         verbose_name='Курс',
-        help_text='Выберите курс'
+        help_text='Выберите курс',
+        related_name='lessons'
     )
 
     def __str__(self):
@@ -49,4 +50,3 @@ class Lesson(models.Model):
     class Meta:
         verbose_name = 'Урок'
         verbose_name_plural = 'Уроки'
-
