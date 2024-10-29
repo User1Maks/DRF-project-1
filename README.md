@@ -8,6 +8,9 @@
 
 Данные для запроса в Postman:
 
+Вывод списка пользователей с историей платежей:
+http://localhost:8000/users/list/
+
 Порядок сортировки по дате, по убыванию:
 http://localhost:8000/users/payments/?ordering=-payment_date
 
