@@ -20,6 +20,88 @@
     }
 },
 {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+        "password": "pass",
+        "last_login": "2024-11-02T14:32:40.390Z",
+        "is_superuser": true,
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2024-11-02T08:32:15.956Z",
+        "first_name": "Admin",
+        "last_name": "Adminov",
+        "email": "admin@example.com",
+        "avatar": "",
+        "phone": null,
+        "city": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+        "password": "pass",
+        "last_login": null,
+        "is_superuser": false,
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2024-11-02T14:39:16Z",
+        "first_name": null,
+        "last_name": null,
+        "email": "moderator@sky.com",
+        "avatar": "",
+        "phone": null,
+        "city": null,
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+        "password": "pass",
+        "last_login": null,
+        "is_superuser": false,
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-02T15:15:53.890Z",
+        "first_name": null,
+        "last_name": null,
+        "email": "new-user@sky.pro",
+        "avatar": "",
+        "phone": null,
+        "city": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$CrHzlg0rLtMBNe3f7WdgBN$SJpQB147qpluznwF0U2zeFNYMqrJscxgD1zzvkYgMAY=",
+        "last_login": null,
+        "is_superuser": false,
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-02T16:38:51.467Z",
+        "first_name": null,
+        "last_name": null,
+        "email": "new-users@sky.pro",
+        "avatar": "",
+        "phone": null,
+        "city": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
     "model": "users.payments",
     "pk": 1,
     "fields": {
@@ -56,6 +138,19 @@
         "payment_amount": 90000,
         "payment_by_card": true,
         "cash_payment": false
+    }
+},
+{
+    "model": "users.payments",
+    "pk": 4,
+    "fields": {
+        "user": 1,
+        "payment_date": "2024-10-25",
+        "paid_course": 5,
+        "paid_lesson": 9,
+        "payment_amount": 100000,
+        "payment_by_card": false,
+        "cash_payment": true
     }
 }
 ]

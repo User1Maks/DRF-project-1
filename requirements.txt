@@ -7,3 +7,7 @@ django-phonenumber-field
 pillow
 ipython
 django-filter
+djangorestframework-simplejwt
+
+# Для стилизации импортов
+isort

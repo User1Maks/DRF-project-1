@@ -2,10 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
-
-from education.models import Course, Lesson
-
-NULLABLE = {'blank': True, 'null': True}
+from education.models import Course, Lesson, NULLABLE
 
 
 class User(AbstractUser):
@@ -69,4 +66,3 @@ class Payments(models.Model):
     class Meta:
         verbose_name = 'Платеж'
         verbose_name_plural = 'Платежи'
-
