@@ -6,8 +6,9 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
 from education.models import Course, Lesson
+from education.permissions import IsOwner
 from education.serializers import CourseSerializer, LessonSerializer
-from users.permissions import IsModer, IsOwner
+from users.permissions import IsModer
 
 
 class CourseViewSet(ModelViewSet):

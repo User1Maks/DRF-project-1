@@ -21,8 +21,7 @@ class UserCreateAPIView(generics.CreateAPIView):
         """Переопределяем метод создания пользователя, т.к. в модели User
         username = None"""
         user = serializer.save(is_active=True)
-        user.set_password(user.password)  # функция set_password для
-        # зашифрования (хеширования) пароля
+        user.set_password(user.password)
         user.save()
 
 

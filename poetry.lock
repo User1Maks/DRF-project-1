@@ -56,13 +56,13 @@ files = [
 
 [[package]]
 name = "django"
-version = "5.1.2"
+version = "5.1.3"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
 optional = false
 python-versions = ">=3.10"
 files = [
-    {file = "Django-5.1.2-py3-none-any.whl", hash = "sha256:f11aa87ad8d5617171e3f77e1d5d16f004b79a2cf5d2e1d2b97a6a1f8e9ba5ed"},
-    {file = "Django-5.1.2.tar.gz", hash = "sha256:bd7376f90c99f96b643722eee676498706c9fd7dc759f55ebfaf2c08ebcdf4f0"},
+    {file = "Django-5.1.3-py3-none-any.whl", hash = "sha256:8b38a9a12da3ae00cb0ba72da985ec4b14de6345046b1e174b1fd7254398f818"},
+    {file = "Django-5.1.3.tar.gz", hash = "sha256:c0fa0e619c39325a169208caef234f90baa925227032ad3f44842ba14d75234a"},
 ]
 
 [package.dependencies]
@@ -274,13 +274,13 @@ ptyprocess = ">=0.5"
 
 [[package]]
 name = "phonenumberslite"
-version = "8.13.48"
+version = "8.13.49"
 description = "Python version of Google's common library for parsing, formatting, storing and validating international phone numbers."
 optional = false
 python-versions = "*"
 files = [
-    {file = "phonenumberslite-8.13.48-py2.py3-none-any.whl", hash = "sha256:db060fd07421306f8fbc4332ca16b8785df0fa70371d3ed632519546c1a11274"},
-    {file = "phonenumberslite-8.13.48.tar.gz", hash = "sha256:9548bc4c3a7c4d67f7945ba0286e9a37c3ee4ea5531f7ea2518d1cbdc857f50f"},
+    {file = "phonenumberslite-8.13.49-py2.py3-none-any.whl", hash = "sha256:a1472732f7d18a1b3a44d131120d5ce185a2f647d01e47ffd3350a0d1b513fcf"},
+    {file = "phonenumberslite-8.13.49.tar.gz", hash = "sha256:5bb29a8dd016e098e217994cdf06d7e557846d92e8e050c484c8407a439b674c"},
 ]
 
 [[package]]
@@ -631,4 +631,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "0dfe586912ea0c227bb167e720b5dc767b4916b79e881487816bb637b0383d2f"
+content-hash = "1284db7be51c9e07295721c3591a8ddac760b6e97b9f4d5d6e1129a654deb7c9"
