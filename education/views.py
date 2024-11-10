@@ -3,30 +3,25 @@ from rest_framework.generics import (CreateAPIView, DestroyAPIView,
                                      UpdateAPIView)
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.viewsets import ModelViewSet
+from rest_framework import viewsets, status
 
 from education.models import Course, Lesson
+from education.paginators import EducationPaginator
 from education.permissions import IsOwner
 from education.serializers import CourseSerializer, LessonSerializer
 from users.permissions import IsModer
 
 
-class CourseViewSet(ModelViewSet):
+class CourseViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
+    pagination_class = EducationPaginator
 
     def create(self, request, *args, **kwargs):
         """Метод для автоматического добавления автора курса"""
-        # Устанавливаем текущего пользователя как владельца курса
-        request.data['owner'] = request.user.id
-
-        # Создаем и сохраняем курс с обновленными данными
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)  # Проверка валидности данных
-        self.perform_create(serializer)  # Сохраняем объект
-
-        return Response(serializer.data)  # Возвращаем данные о
-        # созданном объекте
+        data = request.data.copy()
+        data['owner'] = request.user.id
+        return super().create(request, *args, **kwargs)
 
     def get_permissions(self):
         """Проверяем пользователя на права доступа и даем ему
@@ -45,6 +40,7 @@ class CourseViewSet(ModelViewSet):
 class LessonListAPIView(ListAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
+    pagination_class = EducationPaginator
 
 
 class LessonCreateAPIView(CreateAPIView):
