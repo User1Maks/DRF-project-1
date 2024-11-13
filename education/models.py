@@ -21,6 +21,13 @@ class Course(models.Model):
                               verbose_name='Автор курса',
                               help_text='Укажите автора курса')
 
+    price = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        verbose_name='Цена курса',
+        help_text='Введите цену курса'
+    )
+
     def __str__(self):
         return f'{self.name}'
 
@@ -54,6 +61,13 @@ class Lesson(models.Model):
                               **NULLABLE,
                               verbose_name='Преподаватель',
                               help_text='Укажите преподавателя урока')
+
+    price = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        verbose_name='Цена урока',
+        help_text='Введите цену урока'
+    )
 
     def __str__(self):
         return f'{self.name}'

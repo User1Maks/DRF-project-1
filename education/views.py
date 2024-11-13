@@ -1,9 +1,9 @@
+from rest_framework import status, viewsets
 from rest_framework.generics import (CreateAPIView, DestroyAPIView,
                                      ListAPIView, RetrieveAPIView,
                                      UpdateAPIView)
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework import viewsets, status
 
 from education.models import Course, Lesson
 from education.paginators import EducationPaginator
@@ -13,6 +13,7 @@ from users.permissions import IsModer
 
 
 class CourseViewSet(viewsets.ModelViewSet):
+    """ ViewSet for course """
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
     pagination_class = EducationPaginator
@@ -38,12 +39,14 @@ class CourseViewSet(viewsets.ModelViewSet):
 
 
 class LessonListAPIView(ListAPIView):
+    """ Lesson list endpoint """
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
     pagination_class = EducationPaginator
 
 
 class LessonCreateAPIView(CreateAPIView):
+    """ Lesson create endpoint """
     serializer_class = LessonSerializer
     permission_classes = (~IsModer, IsAuthenticated,)
 
@@ -55,17 +58,20 @@ class LessonCreateAPIView(CreateAPIView):
 
 
 class LessonRetrieveAPIView(RetrieveAPIView):
+    """ Lesson retrieve endpoint """
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
     permission_classes = (IsAuthenticated, IsModer | IsOwner)
 
 
 class LessonUpdateAPIView(UpdateAPIView):
+    """ Lesson update endpoint """
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
     permission_classes = (IsAuthenticated, IsModer | IsOwner)
 
 
 class LessonDestroyAPIView(DestroyAPIView):
+    """ Lesson delete endpoint """
     queryset = Lesson.objects.all()
     permission_classes = (IsAuthenticated, IsOwner | ~IsModer)

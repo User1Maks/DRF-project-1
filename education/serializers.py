@@ -1,8 +1,9 @@
 from rest_framework import serializers
+from rest_framework.response import Response
 
 from education.models import Course, Lesson
 from education.validators import validate_link_to_video
-from users.models import User, Subscriptions
+from users.models import Subscriptions, User
 
 
 class LessonSerializer(serializers.ModelSerializer):
@@ -30,14 +31,4 @@ class CourseSerializer(serializers.ModelSerializer):
         """Метод для возвращения подписок пользователя"""
         user = self.context.get('request').user
 
-        #  Проверяем, аутентифицирован ли пользователь
-        if user.is_authenticated:
-            sub = Subscriptions.objects.filter(
-                user=user,
-                course=course,
-                subscription=True  # Проверяем, что подписка активна
-            ).exists()
-            return sub
-        return False   # Если пользователь не аутентифицирован, возвращаем False
-
-
+        return Subscriptions.objects.filter(user=user, course=course).exists()
