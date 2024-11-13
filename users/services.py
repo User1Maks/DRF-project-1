@@ -23,15 +23,15 @@ def create_stripe_product(name):
 #     return int(amount * rate)
 
 
-def create_stripe_price(payment_object):
+def create_stripe_price(payment_amount):
     """ Создает цену в stripe. """
 
     price = stripe.Price.create(
         currency="rub",
         # переводим из копеек в руб / из центов доллары
-        unit_amount=int(payment_object.price * 100),
+        unit_amount=int(payment_amount * 100),
         # recurring={"interval": "month"}, # ежемесячная оплата
-        product_data={"name": payment_object.name},
+        product_data={"name": "Оплата за курс/урок"},
     )
     return price.get('id')
 
@@ -48,7 +48,7 @@ def create_stripe_sessions(price_id):
     return session.get('id'), session.get('url')
 
 
-def check_payment_status(session_id):
-    """ Проверяет статус платежа в Stripe по session_id. """
-    session = stripe.checkout.Session.retrieve(session_id)
-    return session.get("payment_status")
+# def check_payment_status(session_id):
+#     """ Проверяет статус платежа в Stripe по session_id. """
+#     session = stripe.checkout.Session.retrieve(session_id)
+#     return session.get("payment_status")

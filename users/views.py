@@ -72,16 +72,18 @@ class PaymentsViewSet(viewsets.ModelViewSet):
         """
         payment = serializer.save(user=self.request.user)
 
-        # Получаем данные для Stripe
-        if payment.course:
-            payment_object = payment.course
-        elif payment.lesson:
-            payment_object = payment.lesson
-        else:
-            raise AttributeError('Выберите курс или урок')
+        # # Получаем данные для Stripe
+        # if payment.course:
+        #     payment_object = payment.course
+        # elif payment.lesson:
+        #     payment_object = payment.lesson
+        # else:
+        #     raise AttributeError('Выберите курс или урок')
+
+        payment_amount = self.request.data.get('payment_amount')
 
         # создаем стоимость
-        price = create_stripe_price(payment_object)
+        price = create_stripe_price(payment_amount)
 
         # Создаем сессию Stripe
         session_id, payment_link = create_stripe_sessions(price)
@@ -89,7 +91,7 @@ class PaymentsViewSet(viewsets.ModelViewSet):
         # Сохраняем данные сессии и ссылки
         payment.session_id = session_id
         payment.link = payment_link
-        payment.payment_amount = payment_object.price
+        payment.payment_amount = payment_amount
         payment.save()
 
 
