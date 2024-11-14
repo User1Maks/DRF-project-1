@@ -8,7 +8,8 @@ from rest_framework_simplejwt.views import (TokenBlacklistView,
 from users.apps import UsersConfig
 from users.views import (PaymentsViewSet, SubscriptionView, UserCreateAPIView,
                          UserDestroyAPIView, UserListAPIView,
-                         UserRetrieveAPIView, UserUpdateAPIView)
+                         UserRetrieveAPIView, UserUpdateAPIView,
+                         )
 
 app_name = UsersConfig.name
 

@@ -8,6 +8,9 @@ class PaymentsSerializer(ModelSerializer):
         model = Payments
         fields = '__all__'
 
+        # необязательно к заполнению
+        extra_kwargs = {'user': {'required': False}}
+
 
 class UserSerializer(ModelSerializer):
     payments = PaymentsSerializer(many=True, read_only=True)

@@ -70,15 +70,8 @@ class PaymentsViewSet(viewsets.ModelViewSet):
          Создает продукт и цену, основываясь на данных платежа, а также
          запускается сессия оплаты и сохраняется ссылка на оплату.
         """
-        payment = serializer.save(user=self.request.user)
 
-        # # Получаем данные для Stripe
-        # if payment.course:
-        #     payment_object = payment.course
-        # elif payment.lesson:
-        #     payment_object = payment.lesson
-        # else:
-        #     raise AttributeError('Выберите курс или урок')
+        payment = serializer.save(user=self.request.user)
 
         payment_amount = self.request.data.get('payment_amount')
 
