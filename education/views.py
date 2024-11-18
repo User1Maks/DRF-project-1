@@ -3,12 +3,12 @@ from rest_framework.generics import (CreateAPIView, DestroyAPIView,
                                      ListAPIView, RetrieveAPIView,
                                      UpdateAPIView)
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
 
 from education.models import Course, Lesson
 from education.paginators import EducationPaginator
 from education.permissions import IsOwner
 from education.serializers import CourseSerializer, LessonSerializer
+from education.tasks import send_email_info_update_course
 from users.permissions import IsModer
 
 
@@ -34,8 +34,19 @@ class CourseViewSet(viewsets.ModelViewSet):
             self.permission_classes = (IsModer | IsOwner,)  # или модератор
             # или владелец
         elif self.action == 'destroy':
-            self.permission_classes = (IsOwner | ~IsModer, )
+            self.permission_classes = (IsOwner | ~IsModer,)
         return super().get_permissions()
+
+    def perform_update(self, serializer):
+        """Отправляет письмо пользователю при обновлении курса."""
+        # Сохраняем объект курса
+        instance = serializer.save()
+
+        # Получаем объект курса
+        course = instance
+
+        # Отправляем email всем подписчикам курса
+        send_email_info_update_course.delay(course.id)
 
 
 class LessonListAPIView(ListAPIView):

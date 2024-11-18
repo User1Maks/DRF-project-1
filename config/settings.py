@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework_simplejwt',
     'drf_yasg',
+    'corsheaders',
+    'django_celery_beat',
 
     'users',
     'education',
@@ -117,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'ru-ru'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Europe/Moscow'
 
@@ -149,10 +151,58 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated'],
 }
 
+# Если работаем на удаленном сервере, то обязательны эти
+# 2 настройки: CORS_ALLOWED_ORIGINS и CSRF_TRUSTED_ORIGINS,
+# локально они не обязательны
+# CORS_ALLOWED_ORIGINS = [
+#     "https://read-only.example.com",
+#     "https://read-and-write.example.com",
+# ]
+#
+# CSRF_TRUSTED_ORIGINS = [
+#     "https://read-and-write.example.com",
+# ]
+
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=50),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
 
 STRIPE_API_KEY = os.getenv('STRIPE_API_KEY')
+
+# URL-адрес брокера сообщений
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
+
+# URL-адрес брокера результатов, также Redis
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
+
+CELERY_BEAT_SCHEDULER = os.getenv('CELERY_BEAT_SCHEDULER')
+
+# Часовой пояс для работы Celery
+CELERY_TIMEZONE = TIME_ZONE
+
+# Флаг отслеживания выполнения задач
+CELERY_TASK_TRACK_STARTED = True
+
+# Максимальное время на выполнение задачи
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+# Периодическая задача
+CELERY_BEAT_SCHEDULE = {
+    "my-5-min-task": {
+        "task": "education.tasks.last_login_check",
+        "schedule": timedelta(days=1),
+    },
+}
+
+
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_PORT = os.getenv("EMAIL_PORT")
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", False) == "True"
+EMAIL_USE_SSL = os.getenv("EMAIL_USE_SSL", False) == "True"
+
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
